@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>Comparing Unemployment Rates to Education</title>
+        
+    <!-- Meta tags for helping search engines-->
+    <meta name="author" content="J. Heutmaker">
+    <meta name="description" content="An interactive map comparing unemployment rates to education levels within the United States using date from 2017.">
+    <meta name="keywords" content="interactive, unemployment, education, 2017">
+    
+    <!--Stylesheets and linking to outside sources-->
+        <!-- Bootstrap core CSS -->
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+        
+        
+        <!-- Personal CSS-->
+        <link rel="stylesheet" type="text/css" href="css/main_stylesheet.css"/>
+        
+        <!-- D3 library-->
+        <script src="http://d3js.org/d3.v3.min.js"></script>
+        <script src="http://d3js.org/queue.v1.min.js"></script>
+        <script src="http://d3js.org/topojson.v1.min.js"></script>
+        
+        <!--Filter tool-->
+        <script src="http://cdnjs.cloudflare.com/ajax/libs/crossfilter/1.3.1/crossfilter.min.js"></script>
+        
+        <!--"Tips" Tool-->
+        <script src="http://labratrevenge.com/d3-tip/javascripts/d3.tip.v0.6.3.js"></script>  
+    </head>
+    
+    <body>
+        <!--Navbar for ease of use on website-->
+        <nav class="navbar navbar-expand-md navbar-dark fixed-top">
+		<a class="navbar-brand"></a>
+            
+		<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarsExampleDefault" aria-controls="navbarsExampleDefault" aria-expanded="false" aria-label="Toggle navigation">
+			<span class="navbar-toggler-icon"></span>
+		</button>
+            
+        <!--Links to outisde pages-->
+		<div class="collapse navbar-collapse" id="navbarsExampleDefault">
+			<ul class="navbar-nav mr-auto">
+                
+                <li class= "nav-image">
+                <a class="figure-img" href="https://lostabroad.github.io/jasonheutmaker/"><img class="figure-img" src="images/cloud-01.svg" alt="logo " width="30px "/></a>
+                </li>
+                
+				<li class="nav-item active">
+					<a class="nav-link" href="https://lostabroad.github.io/jasonheutmaker/">Home <span class="sr-only"></span></a>
+				</li>
+                
+				<li class="nav-item dropdown">
+					<a class="nav-link dropdown-toggle" href="#" id="dropdown01" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Work Examples</a>
+                    
+					<div class="dropdown-menu" aria-labelledby="dropdown01">
+						<a class="dropdown-item" href="https://lostabroad.github.io/jasonheutmaker/#portfolio">Projects</a>
+						<a class="dropdown-item" href="https://lostabroad.github.io/jasonheutmaker/#resume">Resume</a>
+						<a class="dropdown-item" href="https://lostabroad.github.io/jasonheutmaker/#about">About</a>
+					</div>
+				</li>
+			</ul>
+            
+            <!-- Sets up a searchbar-->
+			<form id="searchform" class="form-inline my-2 my-lg-0">
+				<input id="test" class="form-control mr-sm-2" type="text" placeholder="Search" aria-label="Search">
+				<button class="btn btn-secondary my-2 my-sm-0" type="submit">Search</button>
+			</form>
+		</div>
+	</nav>
+        
+    <!-- Creates Title-->
+    <main role="Nav_Title" class="container-fluid">
+
+        <div id="top" class="text-center mt-5 pt-5">
+            <h1>How Education Affects Unemployment</h1>
+            <p class="lead">Education has been considered a cornerstone for a better life, better pay, and more flexibility<br> Below you can see how education levels affect the unemployment rate by county.</p>
+        </div>
+
+        <center>
+            <div id="dropdown" class="row">
+                <p id=filter></p>
+            </div>
+        </center>  
+    <hr />
+	</main>
+        
+    <main role="Chart_Map_Titles">
+        
+            <!--Creates area for Charts to display and displays titles-->
+            <div id="charts">
+              <div id="unemployment-chart" class="chart">
+                <div class="title">Unemployment Rate 2017</div>
+              </div>
+              <div id="collegeGrad-chart" class="chart">
+                <div class="title">College Graduate Rate 2017</div>
+              </div>
+              <div id="someCollege-chart" class="chart">
+                <div class="title">Some College Rate 2017</div>
+              </div>
+              <div id="highschoolGrad-chart" class="chart">
+                <div class="title">Highschool Graduate Rate 2017</div>
+              </div>
+              <div id="noHighschool-chart" class="chart">
+                <div class="title">Highschool Dropout Rate 2017</div>
+              </div>
+            </div>
+        
+            <!--Creates map and legend-->
+            <div id="map">
+              <div id="map-legend">
+                <div class="title">Unemployment Rate 2017
+                  <div class="title">0% - - - - - - - - - - - - - - - - 22%</div>
+                </div>
+              </div>
+            </div>
+        
+        </main> 
+        
+        <footer></footer>
+        
+        <!--Links to custom javascript-->
+        <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+        
+        <script src="js/main.js"></script>
+    </body>
+        
+</html>
