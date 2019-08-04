@@ -385,9 +385,4 @@ function ready(error, us) {
         .attr("class", function(d) { return quantize(graduateById.get(d.id)); });
   };
 
-};
-
-document.getElementById('searchform').onsubmit = function() {
-    window.location = 'http://www.google.com/search?q=site:http://127.0.0.1:51674/Testing/index.html' + document.getElementById('test').value;
-    return false;
-};
+}
