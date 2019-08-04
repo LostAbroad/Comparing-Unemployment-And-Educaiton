@@ -12,7 +12,7 @@ var graduateById = d3.map(),
     nameById = d3.map();
 
 var quantize = d3.scale.quantize()
-    .domain([0, .22])
+    .domain([0, 0.22])
     .range(d3.range(9).map(function(i) { return "q" + i + "-9"; }));
 
 var path = d3.geo.path();
@@ -32,7 +32,7 @@ tip = d3.tip()
         "<br/>Percent Some College Education: " + (someCollegeById.get(d.id)*100).toFixed(2) + "%" +
         "<br/>Percent Highschool Graduate: " + (highschoolById.get(d.id)*100).toFixed(2) + "%" +
         "<br/>Percent Not Highschool Graduate: " + (noHighschoolById.get(d.id)*100).toFixed(2) + "%" +
-        "<br/>Unemployment Rate: " + (unemploymentById.get(d.id)*100).toFixed(2) + "%" 
+        "<br/>Unemployment Rate: " + (unemploymentById.get(d.id)*100).toFixed(2) + "%";
  });
     
 svg.call(tip);
@@ -40,14 +40,15 @@ svg.call(tip);
 var legend = d3.select("#map-legend").
   append("svg:svg").
   attr("width", 160).
-  attr("height", 10)
+  attr("height", 10);
+
 for (var i = 0; i <= 7; i++) {
   legend.append("svg:rect").
   attr("x", i*20).
   attr("height", 10).
   attr("width", 20).
   attr("class", "q" + i + "-9 ");//color
-};
+}
 
 var nation = crossfilter(),
   all = nation.groupAll(),
@@ -73,7 +74,7 @@ queue()
       for(var propertyName in d) {
         if (propertyName == "Area") {
           continue;
-        };
+        }
         d[propertyName] = +d[propertyName];
       }
 
@@ -107,35 +108,35 @@ function ready(error, us) {
       .dimension(Unemployment_rate_2017)
       .group(Unemployment_rate_2017s)
     .x(d3.scale.linear()
-      .domain([0.013, .22])
+      .domain([0.013, 0.22])
       .range([0, 490])),
 
     barChart(true)
       .dimension(college_graduate)
       .group(college_graduates)
     .x(d3.scale.linear()
-      .domain([0.045, .79])
+      .domain([0.045, 0.79])
       .range([0, 490])),
       
       barChart(true)
       .dimension(Some_College_Graduated_2017)
       .group(Some_College_Graduated_2017s)
     .x(d3.scale.linear()
-      .domain([0.085, .47])
+      .domain([0.085, 0.47])
       .range([0, 490])),
       
       barChart(true)
       .dimension(Highschool_Graduated_2017)
       .group(Highschool_Graduated_2017s)
     .x(d3.scale.linear()
-      .domain([0.07, .55])
+      .domain([0.07, 0.55])
       .range([0, 490])),
       
        barChart(true)
       .dimension(Not_Highschool_Graduated_2017)
       .group(Not_Highschool_Graduated_2017s)
     .x(d3.scale.linear()
-      .domain([0.013, .59])
+      .domain([0.013, 0.59])
       .range([0, 490]))
 
   ];
@@ -176,7 +177,7 @@ function ready(error, us) {
         y.domain([0, group.top(1)[0].value]);
       }
       catch(err) {
-        window.reset
+        window.reset;
       } 
 
       div.each(function() {
@@ -259,10 +260,10 @@ function ready(error, us) {
         var e = +(d == "e"),
             x = e ? 1 : -1,
             y = height / 3;
-        return "M" + (.5 * x) + "," + y
+        return "M" + (0.5 * x) + "," + y
             + "A6,6 0 0 " + e + " " + (6.5 * x) + "," + (y + 6)
             + "V" + (2 * y - 6)
-            + "A6,6 0 0 " + e + " " + (.5 * x) + "," + (2 * y)
+            + "A6,6 0 0 " + e + " " + (0.5 * x) + "," + (2 * y)
             + "Z"
             + "M" + (2.5 * x) + "," + (y + 8)
             + "V" + (2 * y - 8)
@@ -290,11 +291,11 @@ function ready(error, us) {
       var selected = [];
 
       dimension.filterRange(extent).top(Infinity).forEach(function(d) {
-        selected.push(d.id)
+        selected.push(d.id);
       });
       svg.attr("class", "counties")
         .selectAll("path")
-          .attr("class", function(d) { if (selected.indexOf(d.id) >= 0) {return "q8-9"} else if (extant.indexOf(d.id) >= 0) {return "q5-9"} else {return null;}});
+          .attr("class", function(d) { if (selected.indexOf(d.id) >= 0) {return "q8-9";} else if (extant.indexOf(d.id) >= 0) {return "q5-9";} else {return null;}});
 
     });
 
@@ -378,7 +379,7 @@ function ready(error, us) {
   window.reset = function(i) {
     charts.forEach(function (c) {
       c.filter(null);
-    })
+    });
     renderAll();
     svg.attr("class", "counties")
       .selectAll("path")
