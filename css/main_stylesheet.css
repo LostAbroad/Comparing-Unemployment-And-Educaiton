@@ -101,7 +101,7 @@ stroke: white;
 
 
 #top {
-	background-image: url("/images/banner1.png");
+	background-image: url("../images/banner1.png");
 	background-size: 100%;
 	background-repeat: no-repeat;
 	box-shadow: 0 0 5px 2px black;
