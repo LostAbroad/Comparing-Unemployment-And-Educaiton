@@ -1,9 +1,11 @@
 //Creates extent
 var extant = [];
 
+//Sets width and height
 var width = 960,
     height = 500;
 
+//Determines Id labels for d3
 var graduateById = d3.map(),
     someCollegeById= d3.map(),
     highschoolById= d3.map(),
@@ -11,18 +13,22 @@ var graduateById = d3.map(),
     unemploymentById = d3.map(),
     nameById = d3.map();
 
+//Sets up scale and range for map/color
 var quantize = d3.scale.quantize()
     .domain([0, 0.22])
     .range(d3.range(9).map(function(i) { return "q" + i + "-9"; }));
 
+//Creates path
 var path = d3.geo.path();
 
+//Selects map and creates appropriate height/width
 var svg = d3.select("#map")
     .append("svg")
     .attr("width", width)
     .attr("height", height)
 ;
 
+//Creates tip tool which selects information from csv to display
 tip = d3.tip()
   .attr('class', 'd3-tip')
   .offset([-10, 0])
@@ -34,14 +40,17 @@ tip = d3.tip()
         "<br/>Percent Not Highschool Graduate: " + (noHighschoolById.get(d.id)*100).toFixed(2) + "%" +
         "<br/>Unemployment Rate: " + (unemploymentById.get(d.id)*100).toFixed(2) + "%";
  });
-    
+
+//Calls tip tool
 svg.call(tip);
 
+//Creates map legend
 var legend = d3.select("#map-legend").
   append("svg:svg").
   attr("width", 160).
   attr("height", 10);
 
+//Parameters for legend
 for (var i = 0; i <= 7; i++) {
   legend.append("svg:rect").
   attr("x", i*20).
@@ -50,6 +59,7 @@ for (var i = 0; i <= 7; i++) {
   attr("class", "q" + i + "-9 ");//color
 }
 
+//Creates filters to be used
 var nation = crossfilter(),
   all = nation.groupAll(),
     college_graduate = nation.dimension(function(d) { return d.College_Graduated_2017; }), 
@@ -67,6 +77,7 @@ var nation = crossfilter(),
     Unemployment_rate_2017 = nation.dimension(function(d) { return d.Unemployment_rate_2017; }),
     Unemployment_rate_2017s = Unemployment_rate_2017.group();
 
+//Determines which data is to be used
 queue()
     .defer(d3.json, "data/counties.json")
     .defer(d3.tsv, "data/2017_College_Income_Unemployment.tsv", function(d) {
@@ -90,6 +101,7 @@ queue()
     })
     .await(ready);
 
+//Appends data to ID and creates mouseover/mouseout
 function ready(error, us) {
   svg.append("g")
       .attr("class", "counties")
@@ -102,6 +114,7 @@ function ready(error, us) {
       .on('mouseover',tip.show)
       .on('mouseout', tip.hide);
 
+//Sets up charts domain and ranges
   var charts = [
       
     barChart(true)
@@ -141,13 +154,14 @@ function ready(error, us) {
 
   ];
 
+//Allows for charts to render
   var chart = d3.selectAll(".chart")
     .data(charts)
     .each(function(chart) { chart.on("brush", renderAll).on("brushend", renderAll); });
 
   renderAll();
 
-  // barChart
+//Creates bar chart area
   function barChart(percent) {
     if (!barChart.id) barChart.id = 0;
 
@@ -159,7 +173,8 @@ function ready(error, us) {
       axis.tickFormat(formatAsPercentage);
       
     }
-    var margin = {top: 10, right: 10, bottom: 20, left: 10},
+//Determines size and range
+    var margin = {top: 10, right: 10, bottom: 30, left: 10},
       x,
       y = d3.scale.linear().range([50, 0]),
       id = barChart.id++,
@@ -184,7 +199,7 @@ function ready(error, us) {
         var div = d3.select(this),
             g = div.select("g");
 
-        // Create the skeletal chart.
+// Create the skeletal chart
         if (g.empty()) {
           div.select(".title").append("a")
               .attr("href", "javascript:reset(" + id + ")")
@@ -218,13 +233,13 @@ function ready(error, us) {
               .attr("transform", "translate(0," + height + ")")
               .call(axis);
 
-          // Initialize the brush component with pretty resize handles.
+// Initialize the brush component with pretty resize handles.
           var gBrush = g.append("g").attr("class", "brush").call(brush);
           gBrush.selectAll("rect").attr("height", height);
           gBrush.selectAll(".resize").append("path").attr("d", resizePath);
         }
 
-        // Only redraw the brush if set externally.
+// Only redraw the brush if set externally.
         if (brushDirty) {
           brushDirty = false;
           g.selectAll(".brush").call(brush);
@@ -361,12 +376,12 @@ function ready(error, us) {
     return d3.rebind(chart, brush, "on");
   }
 
-  // Renders the specified chart or list.
+// Renders the specified chart or list.
   function render(method) {
     d3.select(this).call(method);
   }
 
-  // Whenever the brush moves, re-rendering everything.
+// Whenever the brush moves, re-rendering everything.
   function renderAll() {
     chart.each(render);
   }
@@ -376,6 +391,7 @@ function ready(error, us) {
     renderAll();
   };
 
+//Resets the window
   window.reset = function(i) {
     charts.forEach(function (c) {
       c.filter(null);
@@ -383,7 +399,7 @@ function ready(error, us) {
     renderAll();
     svg.attr("class", "counties")
       .selectAll("path")
-        .attr("class", function(d) { return quantize(graduateById.get(d.id)); });
+        .attr("class", function(d) {return quantize(unemploymentById.get(d.id)); });
   };
 
 }

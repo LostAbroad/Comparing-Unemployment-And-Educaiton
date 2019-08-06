@@ -18,7 +18,7 @@ body {
     float: left;
     background: lightblue;
     padding-top: 5px;
-    padding-bottom: 5px;
+    padding-bottom: 30px;
     padding-right: 5px;
     padding-left: 5px;
     box-shadow: 0 0 5px 2px black; 
@@ -36,7 +36,7 @@ body {
 .chart {
     height: 100px;
     margin-bottom: 10px;
-    margin-top:  10px;
+    margin-top:  6px;
     color: darkblue
 }
 
@@ -92,7 +92,7 @@ stroke: white;
 .q5-9 { fill:salmon; }
 .q6-9 { fill:red; }
 .q7-9 { fill:darkred; }
-.q8-9 { fill:purple; }
+.q8-9 { fill:gold; }
 
 .container-fluid {
 	max-width: 1500px;
@@ -126,7 +126,7 @@ nav {
 footer {
 	height: 50px;
 	background-color: cyan;
-    margin-top: 10px;
+    margin-top: 30px;
 }
 
 #figure{
