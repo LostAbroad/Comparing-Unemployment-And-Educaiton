@@ -85,7 +85,7 @@ var nation = crossfilter(),
 //Determines which data is to be used
 queue()
     .defer(d3.json, "data/counties.json")
-    .defer(d3.tsv, "data/2017_College_Income_Unemployment.tsv", function(d) {
+    .defer(d3.tsv, "data/2017_Education_And_Unemployment.tsv", function(d) {
 
       for(var propertyName in d) {
         if (propertyName == "Area") {
