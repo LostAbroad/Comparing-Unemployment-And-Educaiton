@@ -89,19 +89,23 @@
         
             <!--Creates area for Charts to display and displays titles-->
             <div id="charts">
-              <div id="unemployment-chart" class="chart">
-                <div class="title">Unemployment Rate 2017</div>
+              <div id="unemployment" class="chart">
+                  <div class="popup" onclick="popup_function()"><b>Click Here For Chart Details</b>
+                  <span class="popuptext" id="Details_Popup"><b>How to use the chart graphics below:</b><br><br><b>1) Understand: </b>The charts below are designed to help reflect and understand how education can affect unemployment rates within counties. <br><br><b>2) Main Chart:</b> Since the purpose of these charts is too compare  unemployment to education it is recommend to first start by selecting the desired unemployment range.<br><br><b>3) Selecting Ranges:</b> In order to select ranges hover your cursor over the desired chart until a crosshair pointer appear. Then click on the percentage you wish to start measuring from, drag the crosshair to the desired percentage, and release. The chart will select that percentage range.<br><br><b>4) Reseting:</b> If at any point you desire to reset the graphs a blue "reset" button will appear next to the graphs near their titles. Simply click on it and the entire chart and map will go back to its original display.<br><br><b>5) Final Notes:</b> After you select your desired unemployment rate the rest of the charts below it will reflect that change. If you desire to change the percentage rates being selected on the other charts simply follow the same procedure as noted above.</span>
+                  </div>
+                  <div class="title">Unemployment Rate 2017
+                  </div>
               </div>
-              <div id="collegeGrad-chart" class="chart">
+              <div id="collegeGrad" class="chart">
                 <div class="title">College Graduate Rate 2017</div>
               </div>
-              <div id="someCollege-chart" class="chart">
+              <div id="someCollege" class="chart">
                 <div class="title">Some College Rate 2017</div>
               </div>
-              <div id="highschoolGrad-chart" class="chart">
+              <div id="highschoolGrad" class="chart">
                 <div class="title">Highschool Graduate Rate 2017</div>
               </div>
-              <div id="noHighschool-chart" class="chart">
+              <div id="noHighschool" class="chart">
                 <div class="title">Highschool Dropout Rate 2017</div>
               </div>
             </div>

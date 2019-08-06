@@ -5,6 +5,11 @@ var extant = [];
 var width = 960,
     height = 500;
 
+function popup_function() {
+  var popup = document.getElementById("Details_Popup");
+  popup.classList.toggle("show");
+}
+
 //Determines Id labels for d3
 var graduateById = d3.map(),
     someCollegeById= d3.map(),

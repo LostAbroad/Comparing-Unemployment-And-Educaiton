@@ -25,6 +25,22 @@ body {
     margin-left: 10px;
 }
 
+#collegeGrad{
+    padding-top: 15px;
+}
+
+#someCollege{
+    padding-top: 15px;
+}
+
+#highschoolGrad{
+    padding-top: 15px;  
+}
+
+#noHighschool{
+    padding-top: 15px;
+}
+
 #map {
     float: top;
     margin: 10px;
@@ -92,7 +108,7 @@ stroke: white;
 .q5-9 { fill:salmon; }
 .q6-9 { fill:red; }
 .q7-9 { fill:darkred; }
-.q8-9 { fill:gold; }
+.q8-9 { fill:purple; }
 
 .container-fluid {
 	max-width: 1500px;
@@ -131,4 +147,55 @@ footer {
 
 #figure{
     padding-top: 100px;
+}
+
+/* Popup container */
+.popup {
+  position: relative;
+  display: inline-block;
+  cursor: pointer;
+}
+
+/* The actual popup (appears on top) */
+.popup .popuptext {
+  visibility: hidden;
+  width: 510px;
+  background-color: #555;
+  color: #fff;
+  text-align: left;
+  border-radius: 6px;
+  padding: 10px;
+  position: absolute;
+  z-index: 1;
+  top: 25%;
+}
+
+/* Popup arrow */
+.popup .popuptext::after {
+  content: "";
+  position: absolute;
+  top: 100%;
+  left: 50%;
+  margin-left: -5px;
+  border-width: 5px;
+  border-style: solid;
+  border-color: #555 transparent transparent transparent;
+}
+
+/* Toggle this class when clicking on the popup container (hide and show the popup) */
+.popup .show {
+  visibility: visible;
+  -webkit-animation: fadeIn 1s;
+  animation: fadeIn 1s
+}
+
+/* Add animation (fade in the popup) */
+@-webkit-keyframes fadeIn {
+  from {opacity: 0;} 
+  to {opacity: 1;}
+}
+
+@keyframes fadeIn {
+  from {opacity: 0;}
+  to {opacity:1 ;}
 }
