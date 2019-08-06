@@ -1,12 +1,4 @@
-.d3-tip {
-    line-height: 1.2;
-    padding: 9px;
-    background: lightgray;
-    color: slateblue;
-    border-radius: 20px;
-    text-align: center;
-}
-
+/* Main body*/
 body {
     font-family: 'Open Sans', sans-serif;
     font-size: 12px;
@@ -14,6 +6,7 @@ body {
     background-color: lightcyan;
 }
 
+/* Main Charts*/
 #charts{
     float: left;
     background: lightblue;
@@ -25,6 +18,7 @@ body {
     margin-left: 10px;
 }
 
+/* Charts Headers*/
 #collegeGrad{
     padding-top: 15px;
 }
@@ -41,6 +35,7 @@ body {
     padding-top: 15px;
 }
 
+/* Main map*/
 #map {
     float: top;
     margin: 10px;
@@ -49,6 +44,7 @@ body {
     box-shadow: 0 0 5px 2px black;
 }
 
+/* Chart Specifics*/
 .chart {
     height: 100px;
     margin-bottom: 10px;
@@ -56,20 +52,34 @@ body {
     color: darkblue
 }
 
+/* Chart Reset*/
 .reset {
     padding-left: 20px;
     font-size: 9px;
     color: blue;
 }
 
+/* Chartbar background*/
 .background.bar {
     fill: blue;
 }
 
+/* Chartbar foreground*/
 .foreground.bar {
     fill: violet;
 }
 
+/* Tool tip*/
+.d3-tip {
+    line-height: 1.2;
+    padding: 9px;
+    background: lightgray;
+    color: slateblue;
+    border-radius: 20px;
+    text-align: center;
+}
+
+/* Tooltip details*/
 .axis path, .axis line {
     fill: none;
     stroke: black;
@@ -100,6 +110,7 @@ stroke: white;
     stroke: gray;
 }
 
+/* Legend Colors*/
 .q0-9 { fill:darkblue; }
 .q1-9 { fill:blue; }
 .q2-9 { fill:cyan; }
@@ -110,12 +121,13 @@ stroke: white;
 .q7-9 { fill:darkred; }
 .q8-9 { fill:purple; }
 
+/* Title Container*/
 .container-fluid {
 	max-width: 1500px;
 	background-color: darkgray;
 }
 
-
+/* Title Banner*/
 #top {
 	background-image: url("../images/banner1.png");
 	background-size: 100%;
@@ -125,38 +137,38 @@ stroke: white;
 	background-position: 0;
 }
 
+/* Title*/
 h1 {
 	color: white;
 	text-shadow: black 0.1em 0.1em 0.2em
 }
 
+/* Navbar*/
 nav {
 	background-color: darkcyan;
 }
 
+/* Dropdown*/
 #dropdown {
 	height: 2px;
 	margin-left: 58%;
 }
 
+/* Footer*/
 footer {
 	height: 50px;
 	background-color: cyan;
     margin-top: 30px;
 }
 
-#figure{
-    padding-top: 100px;
-}
-
-/* Popup container */
+/* Popup Container */
 .popup {
   position: relative;
   display: inline-block;
   cursor: pointer;
 }
 
-/* The actual popup (appears on top) */
+/* Actual Popup*/
 .popup .popuptext {
   visibility: hidden;
   width: 510px;
@@ -168,10 +180,9 @@ footer {
   position: absolute;
   z-index: 1;
   top: 25%;
-  margin: -80px;
 }
 
-/* Popup arrow */
+/* Popup arrow*/
 .popup .popuptext::after {
   content: "";
   position: absolute;
@@ -183,20 +194,15 @@ footer {
   border-color: #555 transparent transparent transparent;
 }
 
-/* Toggle this class when clicking on the popup container (hide and show the popup) */
+/* Makes Popup Visible*/
 .popup .show {
   visibility: visible;
   -webkit-animation: fadeIn 1s;
   animation: fadeIn 1s
 }
 
-/* Add animation (fade in the popup) */
+/* Fade Popup In*/
 @-webkit-keyframes fadeIn {
   from {opacity: 0;} 
   to {opacity: 1;}
-}
-
-@keyframes fadeIn {
-  from {opacity: 0;}
-  to {opacity:1 ;}
 }
