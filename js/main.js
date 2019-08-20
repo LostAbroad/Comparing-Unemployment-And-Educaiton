@@ -2,7 +2,7 @@
 var extant = [];
 
 //Sets width and height
-var width = 960,
+var width = 900,
     height = 500;
 
 function popup_function() {
@@ -59,8 +59,8 @@ var legend = d3.select("#map-legend").
 for (var i = 0; i <= 7; i++) {
   legend.append("svg:rect").
   attr("x", i*20).
-  attr("height", 10).
-  attr("width", 20).
+  attr("height", "100%").
+  attr("width", "auto").
   attr("class", "q" + i + "-9 ");//color
 }
 
